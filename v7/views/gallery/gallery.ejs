@@ -1,0 +1,19 @@
+<%-include ("../layouts/header") %>
+
+<!-- Loop through all galleries and display their titles and images -->
+<h1>Gallery</h1>
+<ul>
+  <% for (let i = 0; i < galleries.length; i++) { %>
+  <a href="/gallery/<%= galleries[i]._id %>">
+    <img src="<%= galleries[i].image %>">
+    <h2><%= galleries[i].title %></h2>
+  </a>
+  <% } %>
+</ul>
+
+<div>
+  <a href="gallery/new">Add new post</a>
+</div>
+
+
+<%-include ("../layouts/footer") %>

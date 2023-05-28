@@ -1,0 +1,19 @@
+<%- include('../layouts/header') %>
+
+<ul>
+  <% events.forEach(event => { %>
+    <li>
+      <h1><%= event.name %></h1>
+      <p><strong>Email:</strong> <%= event.email %></p>
+      <p><strong>Phone:</strong> <%= event.phone %></p>
+      <p><strong>Event Type:</strong> <%= event.eventType %></p>
+      <p><strong>Requested Date:</strong> <%= event.requestedDate.toDateString() %></p>
+      <p><strong>Estimated Guest Count:</strong> <%= event.estimatedGuestCount %></p>
+      <% if (event.additionalNote) { %>
+        <p><strong>Additional Notes:</strong> <%= event.additionalNote %></p>
+      <% } %>
+    </li>
+  <% }) %>
+</ul>
+
+<%- include('../layouts/footer') %>

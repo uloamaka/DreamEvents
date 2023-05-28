@@ -1,0 +1,30 @@
+<%-include ("../layouts/header") %>
+<form method="POST" action="/blogs">
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title" required>
+
+  <label for="content">Content:</label>
+  <textarea id="content" name="content" required></textarea>
+
+  <label for="multimediaType">Multimedia Type:</label>
+  <select id="multimediaType" name="multimedia[type]" required>
+    <option value="">Select multimedia type</option>
+    <option value="video">Video</option>
+    <option value="image">Image</option>
+    <option value="audio">Audio</option>
+    <option value="interactive">Interactive</option>
+  </select>
+
+  <label for="multimediaUrl">Multimedia URL:</label>
+  <input type="url" id="multimediaUrl" name="multimedia[url]" required>
+
+  <label for="multimediaDescription">Multimedia Description:</label>
+  <textarea id="multimediaDescription" name="multimedia[description]" required></textarea>
+
+  <label for="author">Author:</label>
+  <input type="text" id="author" name="author" required>
+
+  <button type="submit">Create Blog</button>
+</form>
+
+<%-include ("../layouts/footer") %>

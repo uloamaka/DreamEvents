@@ -1,0 +1,74 @@
+<%-include ("../layouts/header") %>
+
+<main>
+  <section class="section-about">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="section-about__heading">
+            We Are The Best In The Business
+          </h2>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="section-about__subheading">
+              Our Story
+            </h3>
+            <p class="section-about__text">
+              Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit.Quisque blandit purus eu ante bibendum,
+              vitae pulvinar est congue.Donec ut placerat velit.Ut vel lacus varius,
+              lobortis diam et,
+              pellentesque neque.Sed ac magna ut nisi eleifend iaculis a at sem.Donec vitae metus et augue malesuada viverra.Integer gravida est sit amet metus congue,
+              eu malesuada odio mollis.Suspendisse pulvinar turpis sit amet enim dictum molestie.Sed laoreet lacinia augue,
+              ut faucibus nisl malesuada vel.Donec vitae sagittis leo,
+              sed consequat velit.</p>
+            <h3 class="section-about__subheading">
+
+              <h3> Our Vision </h3>
+              <p class="section-about__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque blandit purus eu ante bibendum, vitae pulvinar est congue. Donec ut placerat velit. Ut vel lacus varius, lobortis diam et, pellentesque neque. Sed ac magna ut nisi eleifend iaculis a at sem. Donec vitae metus et augue malesuada viverra. Integer gravida est sit amet metus congue, eu malesuada odio mollis. Suspendisse pulvinar turpis sit amet enim dictum molestie. Sed laoreet lacinia augue, ut faucibus nisl malesuada vel. Donec vitae sagittis leo, sed consequat velit.
+              </p>
+          </div>
+          <div class="col-md-4">
+            <div class="composition">
+              <ul>
+                <li> <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fHBsYW5uaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="Photo 1" class="composition__photo composition__photo--p1">
+                </li>
+                <li> <img src="https://images.unsplash.com/photo-1617622892018-16cdfcb32921?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHRhYmxlJTIwc2V0dGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" alt="Photo 2" class="composition__photo composition__photo--p2">
+                </li>
+                <li><img src="https://images.unsplash.com/photo-1529519195486-16945f0fb37f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YmxhY2slMjB3ZWRkaW5nJTIwcGFydHl8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60" alt="Photo 3" class="composition__photo composition__photo--p3">
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <% if (blogs.length > 0) { %>
+          <% blogs.forEach(function(blog) { %>
+          <div class="blog">
+            <h1 class="blog-title"><%= blog.title %></h1>
+            <div class="blog-multimedia">
+              <% if (blog.multimedia.type === 'video') { %>
+              <iframe src="<%= blog.multimedia.url %>" frameborder="0"></iframe>
+              <% } else if (blog.multimedia.type === 'image') { %>
+              <img src="<%= blog.multimedia.url %>" alt="<%= blog.multimedia.description %>">
+              <% } else if (blog.multimedia.type === 'audio') { %>
+              <audio src="<%= blog.multimedia.url %>" controls></audio>
+              <% } else if (blog.multimedia.type === 'interactive') { %>
+              <iframe src="<%= blog.multimedia.url %>" frameborder="0"></iframe>
+              <% } %>
+              <p class="blog-multimedia-description"><%= blog.multimedia.description %></p>
+            </div>
+            <p class="blog-content"><%= blog.content %></p>
+            <p class="blog-author-date">Written by <%= blog.author %> on <%= blog.createdAt.toDateString() %></p>
+          </div>
+          <% }); %>
+          <% } else { %>
+          <p>No blogs found.</p>
+          <% } %>
+        </div>
+      </div>
+  </section>
+</main><%-include ("../layouts/footer") %>

@@ -1,0 +1,18 @@
+<%- include('../layouts/header') %>
+<!-- views/blogs/show.ejs -->
+<h1><%= blog.title %></h1>
+
+<iframe src="<%= blog.multimedia.url %>" frameborder="0"></iframe>
+<img src="<%= blog.multimedia.url %>" alt="<%= blog.multimedia.description %>">
+
+<p><%= blog.content %></p>
+<p class="blog-multimedia-description"><%= blog.multimedia.description %></p>
+<p class="blog-author-date">Written by <%= blog.author %> on <%= blog.createdAt.toDateString() %></p>
+
+<a href="/blogs/<%= blog._id %>/edit">Edit</a>
+<form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+  <button>Delete</button>
+</form>
+
+
+<%- include('../layouts/footer') %>

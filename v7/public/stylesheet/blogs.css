@@ -1,0 +1,116 @@
+/* Blog Title */
+.blog-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Blog Content */
+  .blog-content {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+  
+  /* Blog Multimedia */
+  .blog-multimedia {
+    margin-bottom: 30px;
+  }
+  
+  .blog-multimedia iframe,
+  .blog-multimedia img,
+  .blog-multimedia audio {
+    max-width: 100%;
+  }
+  
+  .blog-multimedia-description {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  /* Blog Author and Date */
+  .blog-author-date {
+    font-size: 14px;
+    color: #999;
+    margin-top: 20px;
+  }
+  
+  /* Blog Comments */
+  .blog-comments {
+    margin-top: 30px;
+  }
+  
+  .comment-form {
+    margin-bottom: 20px;
+  }
+  
+  .comment-form input[type="text"],
+  .comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .comment-form button {
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .comment-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .comment {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .comment-author-date {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 10px;
+  }
+  
+  .comment-content {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  .comment-reply-link {
+    font-size: 14px;
+    color: #337ab7;
+    text-decoration: none;
+  }
+  
+  .comment-reply-form {
+    margin-top: 20px;
+  }
+  
+  .comment-reply-form input[type="text"],
+  .comment-reply-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .comment-reply-form button {
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  

@@ -1,0 +1,32 @@
+<%-include ("../layouts/header") %>
+<form action="/contact" method="POST">
+  <label for="name">Full Name:</label>
+  <input type="text" id="name" name="name" required minlength="2" maxlength="50">
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required minlength="6" maxlength="255" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
+
+  <label for="phone">Phone:</label>
+  <input type="tel" id="phone" name="phone" required minlength="11" maxlength="11" pattern="[0-9]{11}">
+
+  <label for="eventType">Event Type:</label>
+  <select id="eventType" name="eventType" required>
+    <option value="">Please select</option> 
+    <option value="wedding">Wedding</option>
+    <option value="birthday">Birthday</option>
+    <option value="corporate">Corporate</option>
+    <option value="other">Other</option>
+  </select>
+
+  <label for="requestedDate">Event Date:</label>
+  <input type="date" id="requestedDate" name="requestedDate" required>
+
+  <label for="estimatedGuestCount">Number of Guests:</label>
+  <input type="number" id="estimatedGuestCount" name="estimatedGuestCount" required min="1" max="1000000">
+
+  <label for="additionalNote">Additional Notes:</label>
+  <textarea id="additionalNote" name="additionalNote" maxlength="1000"></textarea>
+
+  <button type="submit">Submit</button>
+</form>
+<%-include ("../layouts/footer") %>

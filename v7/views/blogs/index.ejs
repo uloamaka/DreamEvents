@@ -1,0 +1,29 @@
+<%-include ("../layouts/header") %>
+    <h1>My Blog</h1>
+    <% if (blogs.length > 0) { %>
+      <% blogs.forEach(function(blog) { %>
+        <div class="blog">
+            <h1 class="blog-title"><%= blog.title %></h1>
+            <div class="blog-multimedia">
+              <% if (blog.multimedia.type === 'video') { %>
+                <iframe src="<%= blog.multimedia.url %>" frameborder="0"></iframe>
+              <% } else if (blog.multimedia.type === 'image') { %>
+                <img src="<%= blog.multimedia.url %>" alt="<%= blog.multimedia.description %>">
+              <% } else if (blog.multimedia.type === 'audio') { %>
+                <audio src="<%= blog.multimedia.url %>" controls></audio>
+              <% } else if (blog.multimedia.type === 'interactive') { %>
+                <iframe src="<%= blog.multimedia.url %>" frameborder="0"></iframe>
+              <% } %>
+              <p class="blog-multimedia-description"><%= blog.multimedia.description %></p>
+            </div>
+            <p class="blog-content"><%= blog.content %></p>
+            <p class="blog-author-date">Written by <%= blog.author %> on <%= blog.createdAt.toDateString() %></p>          
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>No blogs found.</p>
+    <% } %>
+    <div>
+      <a href="/blogs/new">add new blog...</a>
+    </div>  
+<%-include ("../layouts/footer") %>
