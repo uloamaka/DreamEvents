@@ -1,13 +1,13 @@
-# YomaEvents
+# DreamEvents
 
 An event planning website using Node.js web application.
 
-Overall, this my project is an event planning website built using Node.js that would provide a comprehensive platform for users to book an event, while the organization plan, organize, and manage events from start to finish. The use of Node.js would provide the website with the flexibility, scalability, and performance needed to handle large amounts of data and traffic.
+Overall, this project is an event planning website built using Node.js that would provide a comprehensive platform for users to book an event, while the organization plan, organize, and manage events from start to finish. The use of Node.js would provide the website with the flexibility, scalability, and performance needed to handle large amounts of data and traffic.
 
 featuring =>
 **User/organization authentication**: The website would allow users to create an account and log in to access their event planning dashboard.
 
-**Event creation**: Users would be able to create events by adding details such as the event name, date, time, location, and type.
+**Event creation**: Users would be able to create events by adding details such as the event name, date, time, location, and type to the contact form.
 
 **Budgeting and expense tracking**: Users would be able to set a budget for their event and track expenses, including vendor costs, venue fees, and other expenses related to the event.
 
@@ -21,6 +21,7 @@ featuring =>
 <!--- [Obtaining API Keys](#obtaining-api-keys) -->
 - [Project Structure](#project-structure)
 - [List of Packages](#list-of-packages)
+- [deployment](#deployment)
 
 ## Features
 
@@ -46,13 +47,13 @@ The easiest way to get started is to clone the repository:
 
 ```bash
 # Get the latest snapshot
-git clone https://github.com/sahat/hackathon-starter.git myproject
+git clone https://github.com/uloamaka/DreamEvents/.git v7
 
 # Change directory
-cd myproject
+cd v7
 
 # Install NPM dependencies
-npm install
+npm install / npm i
 
 # Then simply start your app
 node index.js
@@ -254,7 +255,7 @@ If you just want to display a page, then use `GET`, if you are submitting a form
 Here is a typical workflow for adding new routes to your application. Let's say we are building a page that lists all books from the database.
 
 At this point, we are done with the basic functionalities of the back-end, but further upgrade to be made to higher versions of this event website.
-
+## deployment 
 although I haven't deploy this web app but will be done with **heroku**
 
 ## License
