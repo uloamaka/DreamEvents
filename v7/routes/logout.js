@@ -1,5 +1,4 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 
 router.get("/", (req, res) => {
   req.logout((err) => {
@@ -11,6 +10,5 @@ router.get("/", (req, res) => {
     res.redirect("/");
   });
 });
-
 
 module.exports = router;

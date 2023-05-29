@@ -66,7 +66,7 @@ restart the server each time you make a small change in code. To install, run
 `sudo npm install -g nodemon`.
 ```
 
-## Project Structure
+## Project Structure 
 
 | Name | Description |
 | ---- | ----------- |

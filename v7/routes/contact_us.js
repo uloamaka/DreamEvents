@@ -1,11 +1,9 @@
-const express = require("express"),
- router       = express.Router(),
- Joi          = require("joi"),
- Event        = require("../models/contact"),
- nodemailer   = require("nodemailer"), // Import the Event model and the nodemailer library
- config       = require("../config"),
- { google }   = require("googleapis");
-
+const router = require("express").Router();
+  (Joi = require("joi")),
+  (Event = require("../models/contact")),
+  (nodemailer = require("nodemailer")), // Import the Event model and the nodemailer library
+  (config = require("../config")),
+  ({ google } = require("googleapis"));
 
 // Define the validation schema using Joi
 const eventValidationSchema = Joi.object({
@@ -29,7 +27,6 @@ router.get("/", (req, res) => {
   }
 });
 
-
 // Get all events
 router.get("/requests", async (req, res) => {
   try {
@@ -52,14 +49,14 @@ router.get("/:id", async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
     if (!event) {
-      req.flash('error', 'Event not found');
-      return res.status(404).redirect('/events');
+      req.flash("error", "Event not found");
+      return res.status(404).redirect("/events");
     }
     res.render("events/show", { event });
   } catch (err) {
     const message = err.message || "Error retrieving event";
-    req.flash('error', message);
-    res.status(500).redirect('/events');
+    req.flash("error", message);
+    res.status(500).redirect("/events");
   }
 });
 
@@ -103,22 +100,22 @@ const OAuth2_client = new google.auth.OAuth2(
 OAuth2_client.setCredentials({ refresh_token: config.refresh_token });
 // Define a function to send an email
 async function sendEmail(event) {
-   const accessToken = await OAuth2_client.getAccessToken();
+  const accessToken = await OAuth2_client.getAccessToken();
 
-   const transport = nodemailer.createTransport({
-     service: "gmail",
-     auth: {
-       type: "OAuth2",
-       user: config.user,
-       clientId: config.client_id,
-       clientSecret: config.client_secret,
-       refreshToken: config.refresh_token,
-       accessToken: accessToken,
-     },
-     tls: {
-       rejectUnauthorized: false,
-     },
-   });
+  const transport = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      type: "OAuth2",
+      user: config.user,
+      clientId: config.client_id,
+      clientSecret: config.client_secret,
+      refreshToken: config.refresh_token,
+      accessToken: accessToken,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
 
   // Define your email options
   const mailOptions = {
@@ -176,8 +173,4 @@ router.post("/", async (req, res) => {
   }
 });
 
-
 module.exports = router;
-
-
-

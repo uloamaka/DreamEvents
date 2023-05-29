@@ -1,5 +1,4 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const Gallery = require("../models/gallery");
 const middleware = require("../middleware");
 
@@ -15,19 +14,14 @@ router.get("/", async (req, res) => {
 });
 
 // Render the form to add images to gallery
-router.get(
-  "/new",
-  middleware.isLoggedIn,
-  middleware.isAdmin,
-  async (req, res) => {
-    try {
-      res.render("gallery/form");
-    } catch (err) {
-      const message = err.message || "Error rendering new galliery form";
-      res.status(500).send({ message });
-    }
+router.get("/new", middleware.isLoggedIn, async (req, res) => {
+  try {
+    res.render("gallery/form");
+  } catch (err) {
+    const message = err.message || "Error rendering new galliery form";
+    res.status(500).send({ message });
   }
-);
+});
 
 // GET a single gallery by id
 router.get("/:id", getGallery, (req, res) => {
@@ -35,23 +29,18 @@ router.get("/:id", getGallery, (req, res) => {
 });
 
 // CREATE a new gallery
-router.post(
-  "/",
-  middleware.isLoggedIn,
-  middleware.isAdmin,
-  async (req, res) => {
-    const gallery = new Gallery({
-      image: req.body.image,
-    });
+router.post("/", middleware.isLoggedIn, async (req, res) => {
+  const gallery = new Gallery({
+    image: req.body.image,
+  });
 
-    try {
-      const newGallery = await gallery.save();
-      res.status(201).redirect("/gallery");
-    } catch (err) {
-      res.status(400).json({ message: err.message });
-    }
+  try {
+    const newGallery = await gallery.save();
+    res.status(201).redirect("/gallery");
+  } catch (err) {
+    res.status(400).json({ message: err.message });
   }
-);
+});
 
 // UPDATE a gallery by id
 router.put("/:id", getGallery, async (req, res) => {

@@ -1,5 +1,4 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const config = require("../config");
 const nodemailer = require("nodemailer");
 const path = require("path");
@@ -13,7 +12,7 @@ const OAuth2_client = new google.auth.OAuth2(
 );
 OAuth2_client.setCredentials({ refresh_token: config.refresh_token });
 
- router.post("/", async (req, res) => {
+router.post("/", async (req, res) => {
   const accessToken = await OAuth2_client.getAccessToken();
 
   const transport = nodemailer.createTransport({
@@ -46,7 +45,7 @@ OAuth2_client.setCredentials({ refresh_token: config.refresh_token });
     }
     transport.close();
   });
-}); 
+});
 //===================================================================================================
 //  router.post("/", async (req, res) => {
 //   const accessToken = await OAuth2_client.getAccessToken();

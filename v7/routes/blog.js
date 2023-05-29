@@ -1,5 +1,4 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const Blog = require("../models/blog");
 const middleware = require("../middleware");
 
@@ -8,18 +7,17 @@ router.get("/", async (req, res) => {
   try {
     const blogs = await Blog.find({});
     // res.json(blogs);
-    res.render("blogs/index",{blogs});
+    res.render("blogs/index", { blogs });
   } catch (err) {
     const message = err.message || "Error retrieving galleries";
-    res.status(500)
+    res.status(500);
     req.flash(
-      "error", message +
-      "There was an error retrieving the blogs. Please try again later."
+      "error",
+      message +
+        "There was an error retrieving the blogs. Please try again later."
     );
   }
 });
-
-
 
 // Create a new blog
 // router.post(
@@ -36,26 +34,22 @@ router.get("/", async (req, res) => {
 //     }
 //   }
 // );
-router.post(
-  "/",
-  middleware.isLoggedIn,
-  async (req, res) => {
-    try {
-      console.log(req.user.username);
-      const newBlog = new Blog(req.body);
-      const blog = await newBlog.save();
-      req.flash("success", "Blog successfully created");
-      res.redirect(`/blogs/${blog._id}`);
-    } catch (err) {
-      console.error(err);
-      req.flash("error", "Failed to create blog");
-      res.redirect("/blogs/new");
-    }
+router.post("/", middleware.isLoggedIn, async (req, res) => {
+  try {
+    console.log(req.user.username);
+    const newBlog = new Blog(req.body);
+    const blog = await newBlog.save();
+    req.flash("success", "Blog successfully created");
+    res.redirect(`/blogs/${blog._id}`);
+  } catch (err) {
+    console.error(err);
+    req.flash("error", "Failed to create blog");
+    res.redirect("/blogs/new");
   }
-);
+});
 
 //render the form to add blog
-router.get("/new", middleware.isLoggedIn,  (req, res) => {
+router.get("/new", middleware.isLoggedIn, (req, res) => {
   try {
     res.render("blogs/form");
   } catch (err) {
@@ -78,7 +72,6 @@ router.get("/:id", async (req, res) => {
     res.redirect("/blogs");
   }
 });
-
 
 // Update a blog by ID
 router.put(
