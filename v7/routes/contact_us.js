@@ -1,9 +1,9 @@
 const router = require("express").Router();
-  (Joi = require("joi")),
-  (Event = require("../models/contact")),
-  (nodemailer = require("nodemailer")), // Import the Event model and the nodemailer library
-  (config = require("../config")),
-  ({ google } = require("googleapis"));
+const Joi = require("joi");
+const Event = require("../models/contact");
+const nodemailer = require("nodemailer"); // Import the Event model and the nodemailer library
+const config = require("../config");
+const  { google } = require("googleapis");
 
 // Define the validation schema using Joi
 const eventValidationSchema = Joi.object({
@@ -95,7 +95,7 @@ router.post("/", async (req, res) => {
 const OAuth2_client = new google.auth.OAuth2(
   config.client_id,
   config.client_secret,
-  "https://developers.google.com/oauthplayground" // Redirect URL
+  config.redirect_url
 );
 OAuth2_client.setCredentials({ refresh_token: config.refresh_token });
 // Define a function to send an email
@@ -106,7 +106,7 @@ async function sendEmail(event) {
     service: "gmail",
     auth: {
       type: "OAuth2",
-      user: config.user,
+      user:"godsgiftuloamaka235@gmail.com",
       clientId: config.client_id,
       clientSecret: config.client_secret,
       refreshToken: config.refresh_token,
@@ -141,7 +141,7 @@ async function sendEmail(event) {
     await transport.sendMail(mailOptions);
     console.log("Email sent");
   } catch (error) {
-    console.log("Email error:", error);
+    console.log("Email error:", error.message);
   }
 }
 
@@ -167,8 +167,9 @@ router.post("/", async (req, res) => {
 
     req.flash("success", "Request submitted successfully!");
     return res.redirect("../");
-  } catch (err) {
-    req.flash("error", "Error submitting request: " + err.message);
+  } catch (error) {
+    req.flash("error", "Error submitting request: " + error.message);
+    console.log(error);
     return res.redirect("../contact/");
   }
 });
