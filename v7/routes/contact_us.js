@@ -106,7 +106,7 @@ async function sendEmail(event) {
     service: "gmail",
     auth: {
       type: "OAuth2",
-      user:"godsgiftuloamaka235@gmail.com",
+      user: "godsgiftuloamaka235@gmail.com",
       clientId: config.client_id,
       clientSecret: config.client_secret,
       refreshToken: config.refresh_token,

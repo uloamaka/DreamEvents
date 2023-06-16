@@ -1,18 +1,17 @@
 {
-  "name": "Yoma Events",
+  "name": "Dreams Events",
   "version": "1.0.0",
   "description": "Events planning website",
   "main": "index.js",
-   "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/"
   },
-
   "contributors": [
     ""
   ],
   "scripts": {
-    "start": "node app.js",
+    "start": "node index.js",
     "test": "nyc mocha --timeout=10000 --exit",
     "lint": "eslint \"**/*.js\""
   },
